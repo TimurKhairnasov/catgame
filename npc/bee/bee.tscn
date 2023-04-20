@@ -1,0 +1,217 @@
+[gd_scene load_steps=26 format=3 uid="uid://cjpwow8qofbw6"]
+
+[ext_resource type="Texture2D" uid="uid://c02hlpr65tmq1" path="res://assets/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Attack/Attack-Sheet.png" id="1_6fn7s"]
+[ext_resource type="Script" path="res://npc/bee/bee.gd" id="1_6wkyj"]
+[ext_resource type="Texture2D" uid="uid://l2r8v38ydnjm" path="res://assets/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Hit/Hit-Sheet.png" id="2_swyfq"]
+[ext_resource type="Texture2D" uid="uid://tl0dpxo0gi3m" path="res://assets/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Fly/Fly-Sheet.png" id="3_3h6np"]
+[ext_resource type="AudioStream" uid="uid://1kudyt4xaqes" path="res://assets/sounds/enemy/bee_buzzaway-92041.mp3" id="5_s4o6l"]
+[ext_resource type="AudioStream" uid="uid://cv6u1tbd8lwl4" path="res://assets/sounds/enemy/agressive-bees.mp3" id="6_8kbrw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwecb"]
+atlas = ExtResource("1_6fn7s")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1j0g"]
+atlas = ExtResource("1_6fn7s")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppphd"]
+atlas = ExtResource("1_6fn7s")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3rux"]
+atlas = ExtResource("1_6fn7s")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g5kv"]
+atlas = ExtResource("2_swyfq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk6h8"]
+atlas = ExtResource("2_swyfq")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5me3"]
+atlas = ExtResource("2_swyfq")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnaso"]
+atlas = ExtResource("2_swyfq")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a2u8"]
+atlas = ExtResource("3_3h6np")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o66xh"]
+atlas = ExtResource("3_3h6np")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0cd5"]
+atlas = ExtResource("3_3h6np")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfnvl"]
+atlas = ExtResource("3_3h6np")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jf4bu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwecb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1j0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppphd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3rux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppphd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1j0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwecb")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g5kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk6h8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5me3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnaso")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a2u8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o66xh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0cd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfnvl")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r54qj"]
+radius = 8.78468
+height = 23.0563
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ddine"]
+radius = 9.69763
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m4myy"]
+radius = 97.3666
+
+[sub_resource type="Animation" id="Animation_d27gr"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_8bplg"]
+resource_name = "dying_rotate"
+length = 0.7
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -1.43117, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.7)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m7rh5"]
+_data = {
+"RESET": SubResource("Animation_d27gr"),
+"dying_rotate": SubResource("Animation_8bplg")
+}
+
+[node name="Bee" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_6wkyj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jf4bu")
+animation = &"death"
+autoplay = "fly"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.432671, 1.77002)
+shape = SubResource("CapsuleShape2D_r54qj")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(-0.360156, 8.38368)
+shape = SubResource("CircleShape2D_ddine")
+
+[node name="FollowArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FollowArea"]
+position = Vector2(-7.00175, 93.8022)
+shape = SubResource("CircleShape2D_m4myy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m7rh5")
+}
+
+[node name="SoundEffects" type="CanvasGroup" parent="."]
+
+[node name="death" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("5_s4o6l")
+
+[node name="chase" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("6_8kbrw")
+volume_db = -8.0
+pitch_scale = 0.8
+
+[node name="attack" type="AudioStreamPlayer" parent="SoundEffects"]
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack"]
+[connection signal="body_entered" from="FollowArea" to="." method="_on_detection"]
+[connection signal="body_exited" from="FollowArea" to="." method="_on_loss"]

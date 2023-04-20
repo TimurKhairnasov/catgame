@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://docfo36b7e2fb"]
+
+[ext_resource type="PackedScene" uid="uid://cl5nnuiy4aa4f" path="res://levels/base_level/base_level.tscn" id="1_dgrv7"]
+[ext_resource type="PackedScene" uid="uid://ccas5on3ebgsy" path="res://pickables/bunny.tscn" id="2_r0vcw"]
+[ext_resource type="PackedScene" uid="uid://ccs3153lhhutt" path="res://npc/enemy_boar.tscn" id="3_6n8jm"]
+[ext_resource type="PackedScene" uid="uid://dxir8j06u2wvo" path="res://levels/damagable/peaks.tscn" id="4_5vhgj"]
+
+[node name="DevLevel" instance=ExtResource("1_dgrv7")]
+
+[node name="TileMap" parent="." index="2"]
+layer_0/tile_data = PackedInt32Array(327684, 131072, 3, 327683, 131072, 3, 327682, 131072, 5, 262146, 131072, 0, 327681, 65536, 2, 262145, 65536, 0, 327680, 65536, 2, 262144, 262144, 2, 393215, 65536, 2, 327679, 262144, 2, 393214, 0, 5, 327678, 0, 0, 393213, 131072, 3, 393212, 131072, 3, 393211, 327680, 5, 327675, 393216, 3, 262139, 393216, 3, 196603, 262144, 5, 131067, 196608, 5, 327689, 196608, 3, 262153, 196608, 5, 327688, 131072, 3, 327686, 131072, 5, 262150, 131072, 0, 327685, 0, 5, 262149, 0, 0, 327687, 131072, 3)
+
+[node name="Bunny" parent="." index="5" instance=ExtResource("2_r0vcw")]
+position = Vector2(126.262, 139.104)
+
+[node name="EnemyBoar" parent="." index="6" instance=ExtResource("3_6n8jm")]
+position = Vector2(-95.849, 136.357)
+
+[node name="Peaks" parent="." index="7" instance=ExtResource("4_5vhgj")]

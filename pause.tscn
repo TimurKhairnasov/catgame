@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://tt1x6o4uipl7"]
+
+[ext_resource type="FontFile" uid="uid://bpvrun13vwnd6" path="res://assets/fonts/ka1.ttf" id="1_oqgi1"]
+[ext_resource type="Script" path="res://pause.gd" id="1_s050e"]
+[ext_resource type="FontFile" uid="uid://b00hmw75o067q" path="res://assets/fonts/joystix monospace.otf" id="2_q6nxw"]
+[ext_resource type="AudioStream" uid="uid://6ndxrxo8npfm" path="res://assets/sounds/button_click.mp3" id="4_rysxk"]
+
+[sub_resource type="Animation" id="Animation_pn7vt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rbqns"]
+resource_name = "fade"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.745098), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bnjwd"]
+resource_name = "fade_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.745098)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_026ho"]
+_data = {
+"RESET": SubResource("Animation_pn7vt"),
+"fade": SubResource("Animation_rbqns"),
+"fade_in": SubResource("Animation_bnjwd")
+}
+
+[node name="PauseContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s050e")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.968627, 0.937255, 0.92549, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Pause" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_oqgi1")
+theme_override_font_sizes/font_size = 16
+text = "pause"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_q6nxw")
+theme_override_font_sizes/font_size = 12
+text = "resume"
+
+[node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_q6nxw")
+theme_override_font_sizes/font_size = 12
+text = "main menu"
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="MarginContainer"]
+stream = ExtResource("4_rysxk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_026ho")
+}
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

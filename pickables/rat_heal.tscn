@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckhg0javn3m1"]
+
+[ext_resource type="Script" path="res://pickables/rat_heal.gd" id="1_8l8hw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4mxmo"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fikd8"]
+radius = 5.41141
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a8aru"]
+radius = 5.99066
+height = 20.1948
+
+[node name="RatHeal" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_8l8hw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4mxmo")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.889733
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.202694, 2.63499)
+shape = SubResource("CircleShape2D_fikd8")
+
+[node name="KillingArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillingArea"]
+position = Vector2(0.0378113, 1.9662)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_a8aru")
+
+[connection signal="body_entered" from="KillingArea" to="." method="_on_kill"]

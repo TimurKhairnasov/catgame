@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dj8pgpfdmjcky"
+path="res://.godot/imported/mixkit-arcade-rising-231 (online-audio-converter.com).mp3-f7b649cb7a2095dab0eeb2dddd137956.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/enemy/mixkit-arcade-rising-231 (online-audio-converter.com).mp3"
+dest_files=["res://.godot/imported/mixkit-arcade-rising-231 (online-audio-converter.com).mp3-f7b649cb7a2095dab0eeb2dddd137956.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

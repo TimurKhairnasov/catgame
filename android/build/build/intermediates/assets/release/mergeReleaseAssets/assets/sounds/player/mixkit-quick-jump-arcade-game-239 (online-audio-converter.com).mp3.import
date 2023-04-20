@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c2dl0p8i7kraf"
+path="res://.godot/imported/mixkit-quick-jump-arcade-game-239 (online-audio-converter.com).mp3-875c40c14ef3f84aaf8d4b7ad8ff5953.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/player/mixkit-quick-jump-arcade-game-239 (online-audio-converter.com).mp3"
+dest_files=["res://.godot/imported/mixkit-quick-jump-arcade-game-239 (online-audio-converter.com).mp3-875c40c14ef3f84aaf8d4b7ad8ff5953.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

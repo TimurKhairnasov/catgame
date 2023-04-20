@@ -1,0 +1,108 @@
+[gd_scene load_steps=13 format=3 uid="uid://cmks65d4eomcx"]
+
+[ext_resource type="Texture2D" uid="uid://s5y1kh0f1s8" path="res://assets/effects/Line of fire.png" id="1_bf1im"]
+[ext_resource type="Script" path="res://npc/ammo/line_of_fire.gd" id="2_wx6ss"]
+[ext_resource type="AudioStream" uid="uid://bljacfqnq2y25" path="res://assets/sounds/enemy/mix_05s (audio-joiner (mp3cut.net) (1).mp3" id="3_ix10a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kq7b"]
+atlas = ExtResource("1_bf1im")
+region = Rect2(0, 384, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_651o1"]
+atlas = ExtResource("1_bf1im")
+region = Rect2(0, 320, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8jy8"]
+atlas = ExtResource("1_bf1im")
+region = Rect2(0, 256, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsl5x"]
+atlas = ExtResource("1_bf1im")
+region = Rect2(0, 192, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsscy"]
+atlas = ExtResource("1_bf1im")
+region = Rect2(0, 128, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvi1i"]
+atlas = ExtResource("1_bf1im")
+region = Rect2(0, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uemxe"]
+atlas = ExtResource("1_bf1im")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dvtuq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kq7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_651o1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8jy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsl5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsscy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvi1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uemxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uemxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvi1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsscy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsl5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8jy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_651o1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kq7b")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b82b8"]
+size = Vector2(128.545, 21.4097)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_dvtuq")
+animation = &"attack"
+frame = 13
+frame_progress = 1.0
+script = ExtResource("2_wx6ss")
+
+[node name="Attack" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2(-0.0719948, 2.10548)
+shape = SubResource("RectangleShape2D_b82b8")
+disabled = true
+
+[node name="Shot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ix10a")
+
+[connection signal="body_entered" from="Attack" to="." method="_on_attack"]

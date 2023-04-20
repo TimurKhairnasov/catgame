@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c5q60mdi3f8xf"
+path="res://.godot/imported/type-ui-38782 (mp3cut.net).mp3-5622740bfe8e2fdf7de6d7e591246e78.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/effects/type-ui-38782 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/type-ui-38782 (mp3cut.net).mp3-5622740bfe8e2fdf7de6d7e591246e78.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

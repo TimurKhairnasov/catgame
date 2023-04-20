@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3vjvbpb6lqiv"]
+
+[ext_resource type="Script" path="res://levels/boss_levels/boss_health.gd" id="1_da5n0"]
+
+[node name="BossHealth" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_da5n0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HPMargin" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="HPContainer" type="HBoxContainer" parent="MarginContainer/HPMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4

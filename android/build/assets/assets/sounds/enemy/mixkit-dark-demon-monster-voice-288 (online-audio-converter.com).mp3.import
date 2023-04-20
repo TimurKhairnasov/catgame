@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cbas1rp5s1qmi"
+path="res://.godot/imported/mixkit-dark-demon-monster-voice-288 (online-audio-converter.com).mp3-83d7481c51256d5491317aff42da31b5.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/enemy/mixkit-dark-demon-monster-voice-288 (online-audio-converter.com).mp3"
+dest_files=["res://.godot/imported/mixkit-dark-demon-monster-voice-288 (online-audio-converter.com).mp3-83d7481c51256d5491317aff42da31b5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

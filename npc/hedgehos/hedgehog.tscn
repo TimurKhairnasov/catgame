@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://nj2lau36dm43"]
+
+[ext_resource type="Script" path="res://npc/hedgehos/hedgehog.gd" id="1_0n3bg"]
+[ext_resource type="Texture2D" uid="uid://cmq68hwpvq7gp" path="res://assets/npc/Hedgehog Sprite Sheet.png" id="1_2ifp0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ki2d"]
+atlas = ExtResource("1_2ifp0")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv7ea"]
+atlas = ExtResource("1_2ifp0")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ylai"]
+atlas = ExtResource("1_2ifp0")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5krrd"]
+atlas = ExtResource("1_2ifp0")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5itqs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ki2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv7ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ylai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5krrd")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g7qau"]
+radius = 5.03928
+height = 16.3409
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dpqbo"]
+radius = 5.7689
+height = 19.7644
+
+[node name="Hedgehog" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_0n3bg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5itqs")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.368056
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11.0142)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_g7qau")
+
+[node name="KillingArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillingArea"]
+position = Vector2(0, 10.3126)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dpqbo")
+
+[connection signal="body_entered" from="KillingArea" to="." method="_on_attack"]

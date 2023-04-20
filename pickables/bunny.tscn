@@ -1,0 +1,150 @@
+[gd_scene load_steps=19 format=3 uid="uid://ccas5on3ebgsy"]
+
+[ext_resource type="Script" path="res://pickables/bunny.gd" id="1_ue4g8"]
+[ext_resource type="Texture2D" uid="uid://dott5ud0fjxkn" path="res://assets/npc/MiniBunny.png" id="2_u2r7y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtkgi"]
+atlas = ExtResource("2_u2r7y")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjc2k"]
+atlas = ExtResource("2_u2r7y")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6s5h"]
+atlas = ExtResource("2_u2r7y")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pquqv"]
+atlas = ExtResource("2_u2r7y")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsr0s"]
+atlas = ExtResource("2_u2r7y")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eox4p"]
+atlas = ExtResource("2_u2r7y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ba32"]
+atlas = ExtResource("2_u2r7y")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqkes"]
+atlas = ExtResource("2_u2r7y")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thc2f"]
+atlas = ExtResource("2_u2r7y")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nown1"]
+atlas = ExtResource("2_u2r7y")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmrbf"]
+atlas = ExtResource("2_u2r7y")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwyu4"]
+atlas = ExtResource("2_u2r7y")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq5gf"]
+atlas = ExtResource("2_u2r7y")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1yeiy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtkgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjc2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6s5h")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pquqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsr0s")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eox4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ba32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqkes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thc2f")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nown1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmrbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwyu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq5gf")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j33a7"]
+radius = 3.88722
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vyocw"]
+radius = 4.98209
+height = 18.1507
+
+[node name="Bunny" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_ue4g8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1yeiy")
+animation = &"death"
+autoplay = "run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.603734, 11.0162)
+shape = SubResource("CircleShape2D_j33a7")
+
+[node name="KillingArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillingArea"]
+position = Vector2(-0.250071, 9.97556)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vyocw")
+
+[connection signal="body_entered" from="KillingArea" to="." method="_on_kill"]

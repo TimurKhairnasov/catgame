@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://bagqrjdoxtbpx"]
+
+[sub_resource type="GDScript" id="GDScript_v2qmn"]
+script/source = "extends MarginContainer
+
+@onready var hp_container = $HPContainer
+@onready var hp_texture = preload(\"res://assets/hp heart.png\")
+
+func update_hp(hp):
+	var current_hp = hp_container.get_child_count()
+	if hp > current_hp:
+		for i in range(hp - current_hp):
+			var texture_rect = TextureRect.new()
+			texture_rect.texture = hp_texture
+#			texture_rect.custom_minimum_size = 12
+#			texture_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			hp_container.add_child(texture_rect)
+	elif hp < current_hp: 
+		for i in range(current_hp - hp):
+			hp_container.remove_child(hp_container.get_child(0))
+"
+
+[node name="MarginContainer" type="MarginContainer"]
+offset_right = 402.0
+offset_bottom = 22.0
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = SubResource("GDScript_v2qmn")
+
+[node name="HPContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
