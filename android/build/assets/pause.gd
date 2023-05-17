@@ -8,9 +8,6 @@ extends MarginContainer
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Global.connect("on_pause_state_change", toogle_visibility)
-	var animation = animation_player.get_animation("fade")
-	animation_player.play("fade")
-	animation_player.seek(animation.length)
 	
 func toogle_visibility(is_on: bool):
 	print("toogle_visibility ")

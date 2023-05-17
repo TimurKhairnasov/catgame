@@ -71,6 +71,10 @@ func toggle_pause():
 
 func start_new_game():
 	goto_scene(levels[0])
+	
+func start_level(level):
+	self.level = level
+	goto_scene(levels[level])
 
 func goto_outro():
 	pass

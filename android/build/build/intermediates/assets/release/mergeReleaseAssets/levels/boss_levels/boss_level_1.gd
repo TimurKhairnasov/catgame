@@ -180,16 +180,24 @@ const START_LINES = [
 	"Not even a smirk? You have\nno sense of humor, pal...",
 	"Anyway, you might wonder\nwho am I, and why I have\nsuch beautiful eye...",
 ]
+const START_LINES_RUS = [
+	"Я вижу, что ты преодолел\nпортал целым и невредимым!\nЭто облегчение.",
+	"Эти порталы кажутся\nдовольно случайными\nсо своими пунктами назначения.",
+	"Скажи, научился ли ты\nкаким-нибудь новым трюкам после входа\nв портал? Способность дышать\nстрелять или вызывать\nиз глаз лазерные лучи?",
+	"...",
+	"Даже ухмылки? У тебя нет\nнет чувства юмора, приятель...",
+	"В любом случае, вам может\nбыть интересно, кто я и\nпочему у меня такой красивый глаз...",
+]
 const TURN_LINE = "The thing is that I am"
-
+const TURN_LINE_RUS = "Дело в том, что я"
 const TIME_TO_READ = 2
 func start_spectator_line():
 	music_boss_defeated.volume_db = -15
-	for i in range(START_LINES.size()):
-		var duration = spectator.set_line_text(START_LINES[i])
+	for i in range(START_LINES_RUS.size()):
+		var duration = spectator.set_line_text(START_LINES_RUS[i])
 		await get_tree().create_timer(duration + TIME_TO_READ).timeout 
 	outro_player.play("explosion")
-	var duration = spectator.set_line_text(TURN_LINE)
+	var duration = spectator.set_line_text(TURN_LINE_RUS)
 	await get_tree().create_timer(duration + 1).timeout 
 	spectator.set_line_text("")
 	
@@ -218,11 +226,15 @@ const END_LINES = [
 	"HOLLY SHIT!",
 	"That's unusial for your world,\nisn't it?"
 ]
+const END_LINES_RUS = [
+	"Срань господня!",
+	"Это необычно для вашего мира,\nправда?"
+]
 func end_level():
-	for i in range(END_LINES.size()):
+	for i in range(END_LINES_RUS.size()):
 		if i == 1:
 			spectator.flip()
-		var duration = spectator.set_line_text(END_LINES[i])
+		var duration = spectator.set_line_text(END_LINES_RUS[i])
 		await get_tree().create_timer(duration + TIME_TO_READ).timeout 
 	spectator.set_line_text("")
 	outro_player.play("outro")

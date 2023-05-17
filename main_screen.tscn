@@ -37,7 +37,7 @@ script = ExtResource("1_t8csx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
-color = Color(0.968627, 0.937255, 0.92549, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(200, 0)
@@ -48,7 +48,7 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_5870g")
 theme_override_font_sizes/font_size = 22
 text = "REGULAR CAT"
@@ -56,14 +56,14 @@ horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_5870g")
 text = "SAVES THE WORLD"
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.603922, 0, 0, 1)
+theme_override_colors/font_color = Color(0.941176, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_va6ma")
 theme_override_font_sizes/font_size = 8
 text = "or not?"
@@ -75,15 +75,51 @@ theme_override_fonts/font = ExtResource("3_va6ma")
 theme_override_font_sizes/font_size = 12
 text = "START"
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ExitButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_va6ma")
 theme_override_font_sizes/font_size = 12
 text = "EXIT"
 
+[node name="LevelsLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_va6ma")
+theme_override_font_sizes/font_size = 10
+text = " Levels"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level1" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_va6ma")
+theme_override_font_sizes/font_size = 12
+text = "1"
+
+[node name="Level2" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_va6ma")
+theme_override_font_sizes/font_size = 12
+text = "2"
+
+[node name="Level3" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_va6ma")
+theme_override_font_sizes/font_size = 12
+text = "3"
+
+[node name="Leve4" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_va6ma")
+theme_override_font_sizes/font_size = 12
+text = "4"
+
 [node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_va6ma")
 theme_override_font_sizes/font_size = 7
 text = "demo"
@@ -101,10 +137,14 @@ libraries = {
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 mouse_filter = 2
-color = Color(0.968627, 0.937255, 0.92549, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="ButtonClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_nnxw0")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="start_game"]
-[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="exit_game"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ExitButton" to="." method="exit_game"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Leve4" to="." method="_on_leve_4_pressed"]

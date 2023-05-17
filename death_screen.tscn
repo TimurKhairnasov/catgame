@@ -364,7 +364,7 @@ script = ExtResource("1_ybcxh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
-color = Color(0.968627, 0.937255, 0.92549, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -374,7 +374,7 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_51t35")
 theme_override_font_sizes/font_size = 16
 text = "DEAD"
@@ -403,7 +403,7 @@ text = "main menu"
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 mouse_filter = 2
-color = Color(0.968627, 0.937255, 0.92549, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

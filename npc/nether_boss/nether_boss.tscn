@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://npc/nether_boss/nether_boss.gd" id="1_apwd0"]
 [ext_resource type="Texture2D" uid="uid://d3baobsisad8b" path="res://assets/DreamSuckerSpriteSheet.png" id="2_qaiee"]
-[ext_resource type="FontFile" uid="uid://b48qbp122jk7m" path="res://assets/fonts/retganon.ttf" id="3_fnom1"]
+[ext_resource type="FontFile" uid="uid://b8ktu4v4romkr" path="res://assets/fonts/Readable9x4.ttf" id="3_ltpg6"]
 [ext_resource type="Script" path="res://npc/nether_boss/Line.gd" id="4_kwfif"]
 [ext_resource type="AudioStream" uid="uid://c5q60mdi3f8xf" path="res://assets/sounds/effects/type-ui-38782 (mp3cut.net).mp3" id="5_gvbka"]
 
@@ -637,7 +637,8 @@ offset_left = 12.0
 offset_top = -23.0
 offset_right = 90.0
 offset_bottom = 10.0
-theme_override_fonts/font = ExtResource("3_fnom1")
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_ltpg6")
 theme_override_font_sizes/font_size = 8
 script = ExtResource("4_kwfif")
 

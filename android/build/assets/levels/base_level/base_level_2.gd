@@ -39,6 +39,26 @@ const GREETINGS_LINES = [
 	"Nevermind...We need to move.\nTime is of the essence..."
 ]
 
+const GREETINGS_LINES_RUS = [
+	"!",
+	"¡ɐʇuouɐɹɐʇ ɐɯ ɐsᴉɐ",
+	"Ага!",
+	"Потоковая передача прямо в ваш\nразум должна работать. Да...\nя вижу резонанс, линии\nсвязи.",
+	"Вы похоже на кошку.\nТем не менее, у вас есть нечто большее,\n чемпросто инстинкты. Возможно, вы\n можете мне что-нибудь предложить.",
+	"Я недавно прибыл сюда,\nи должен признать, что\nвсе еще пытаюсь понять\nэтот мир.",
+	"Несмотря на то, что я умен, я просто\nне могу понять многих концепций вашего\nмира.",
+	"Но я знаю, почему я здесь. Я\nищу катализатор.",
+	"Грядет что-то плохое...",
+	"Мы в городе, да? И\nесть люди, живущие здесь,\nживущие своей жизнью.",
+	"Если вы мне поможете, они\nи все остальные в этом мире\nвыживут.",
+	"Сложно объяснить что мне нужно.\nЭто за пределами твоей реальности,\nтвоего разума",
+	"Но я верю, что ты все еще\nможешь быть мне полезен.",
+	"...",
+	"Эй! Я знаю, что ты меня понимаешь,\nкивни хотя бы!",
+	"...",
+	"Неважно... Нам нужно двигаться.\nВремя имеет решающее значение..."
+]
+
 const PLAYTIME_LINES = [
 	"You know, I must say that\nI find your world rather fascinating.\nWhat with all the random portals?",
 	"Why don't cats play poker\nin the jungle? Too many cheetah!",
@@ -51,6 +71,18 @@ const PLAYTIME_LINES = [
 	"Are we there yet?"
 ]
 
+const PLAYTIME_LINES_RUS = [
+	"Знаешь, я должен сказать, что\nя нахожу твой мир довольно увлекательным.\nЧто со всеми случайными порталами?",
+	"Why don't cats play poker\nin the jungle? Too many cheetah!",
+	"Ага, никакой реакции...\nе удивлен!",
+	"Знаешь, меня эти порталы\nзавораживают...",
+	"Должен сказать, что люди\nлюбопытный вид. Но что за\nодержимость чизбургерами?",
+	"Я думаю, мы должны найти\nоткрытый портал.",
+	"Спасибо за вопрос, но\nмне не нужны глазные капли...",
+	"Утомительно летать\nкружить сквозь стены,\nзнаете ли.",
+	"Мы уже на месте?"
+]
+
 func text_line(text):
 	var duration = spectator.set_line_text(text)
 	await get_tree().create_timer(duration + TIME_TO_READ).timeout 
@@ -59,8 +91,8 @@ func text_line(text):
 const TIME_TO_READ = 2
 var line = 0
 func start_line():
-	for i in range(GREETINGS_LINES.size()):
-			var duration = spectator.set_line_text(GREETINGS_LINES[i])
+	for i in range(GREETINGS_LINES_RUS.size()):
+			var duration = spectator.set_line_text(GREETINGS_LINES_RUS[i])
 			await get_tree().create_timer(duration + TIME_TO_READ).timeout 
 	spectator.set_line_text("")
 	start_scene_animation("open_the_wall")
@@ -83,10 +115,10 @@ func _on_spectator_on_peering():
 	if is_playing_line:
 		return
 	line += 1
-	if line%PLAYING_LINE_STEP != 0 or line/PLAYING_LINE_STEP > PLAYTIME_LINES.size():
+	if line%PLAYING_LINE_STEP != 0 or line/PLAYING_LINE_STEP > PLAYTIME_LINES_RUS.size():
 		return 
 	is_playing_line = true
-	var duration = spectator.set_line_text(PLAYTIME_LINES[line/PLAYING_LINE_STEP-1])
+	var duration = spectator.set_line_text(PLAYTIME_LINES_RUS[line/PLAYING_LINE_STEP-1])
 	await get_tree().create_timer(duration + TIME_TO_READ).timeout 
 	spectator.set_line_text("")
 	is_playing_line = false

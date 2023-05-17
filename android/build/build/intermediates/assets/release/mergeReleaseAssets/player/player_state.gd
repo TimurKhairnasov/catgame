@@ -20,7 +20,7 @@ const JUMP_ACCUMULATION_STEP = 30
 const JUMP_LIMITATION = 5
 
 const STEP = 10.0
-const SPEED = 200.0
+const SPEED = 150.0
 
 var direction = [0, 0]
 
